@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var oNavigator = window.navigator;
+
+        var sSistemaOperacional = 'SO: ' + oNavigator.oscpu;
+        var sNomeBrowser = ' Nome do Browser: ' +oNavigator.appCodeName;
+        var iVersaoBrowser = ' Versão Browser: ' + oNavigator.appVersion;
+        var sIdiomaBrowser = ' Idioma Broser: ' + oNavigator.language;
+        var sIdiomaSistemaOperacional = 'Idioma SO' + oNavigator.language;
+
+        document.write(sSistemaOperacional, sNomeBrowser, iVersaoBrowser, sIdiomaBrowser, sIdiomaSistemaOperacional);
+       
+    </script>
+</body>
+</html>
