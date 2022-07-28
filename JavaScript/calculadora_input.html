@@ -35,36 +35,58 @@
             return parseInt(iValorSegundo);
         }
 
+        function validaCampoNull() {
+            if(!getValorPrimeiro()) {
+                alert('Campo 1 vazio');
+                return false;
+            }
+
+            if(!getValorSegundo()) {
+                alert('Campo 2 vazio');
+                return false;
+            }
+
+            return true;
+        }
+
         /**
          * Faz a operação de adição
          */
         function adicao() {
-            var iResult = getValorPrimeiro() + getValorSegundo();
-            resultado(iResult);
+            if(validaCampoNull()) {
+                var iResult = getValorPrimeiro() + getValorSegundo();
+                resultado(iResult);
+            }
         }
 
         /**
          * Faz a operação de subtração
          */
         function subtracao() {
-            var iResult = getValorPrimeiro() - getValorSegundo();
-            resultado(iResult);
+            if(validaCampoNull()) {
+                var iResult = getValorPrimeiro() - getValorSegundo();
+                resultado(iResult);
+            }
         }
 
         /**
          * Faz a operação multiplicação
          */
         function multiplicacao() {
-            var iResult = getValorPrimeiro() * getValorSegundo();
-            resultado(iResult);
+            if(validaCampoNull()) {
+                var iResult = getValorPrimeiro() * getValorSegundo();
+                resultado(iResult);
+            }
         }
 
         /**
          * Faz a operação de divisão
          */
         function divisao() {
-            var iResult = getValorPrimeiro() / getValorSegundo();
-            resultado(iResult);
+            if(validaCampoNull()) {
+                var iResult = getValorPrimeiro() / getValorSegundo();
+                resultado(iResult);
+            }
         }
 
         function limpar() {
