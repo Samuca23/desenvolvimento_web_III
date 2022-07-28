@@ -15,34 +15,70 @@
     <button onclick="subtracao()">-</button>
     <button onclick="multiplicacao()">*</button>
     <button onclick="divisao()">/</button>
+    <button onclick="limpar()">C</button>
     <div id="resultado"></div>
 
     <script>
         /**
+         * Retorna o primeiro valor
          */
         function getValorPrimeiro() {
-            return document.getElementById('primeiro').value;
+            var iValorPrimeiro = document.getElementById('primeiro').value;
+            return parseInt(iValorPrimeiro);
         }
         
+        /**
+         * Retorna o segundo valor
+         */
         function getValorSegundo() {
-            return document.getElementById('segundo').value;
-
+            var iValorSegundo =  document.getElementById('segundo').value;
+            return parseInt(iValorSegundo);
         }
 
+        /**
+         * Faz a operação de adição
+         */
         function adicao() {
-
+            var iResult = getValorPrimeiro() + getValorSegundo();
+            resultado(iResult);
         }
 
+        /**
+         * Faz a operação de subtração
+         */
         function subtracao() {
-
+            var iResult = getValorPrimeiro() - getValorSegundo();
+            resultado(iResult);
         }
 
+        /**
+         * Faz a operação multiplicação
+         */
         function multiplicacao() {
-
+            var iResult = getValorPrimeiro() * getValorSegundo();
+            resultado(iResult);
         }
 
+        /**
+         * Faz a operação de divisão
+         */
         function divisao() {
+            var iResult = getValorPrimeiro() / getValorSegundo();
+            resultado(iResult);
+        }
 
+        function limpar() {
+            getValorPrimeiro().value = "";
+            getValorSegundo().value = "";
+            getCampoResult().innerText = "";
+        }
+
+        function getCampoResult() {
+            return document.getElementById('resultado');
+        }
+
+        function resultado($iResult) {
+            getCampoResult().innerText = $iResult;
         }
     </script>
 </body>
