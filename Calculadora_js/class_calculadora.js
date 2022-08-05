@@ -31,10 +31,12 @@ class Calculadora {
 
         var aButtonNumber = this.montaButtonNumberCalc();
         aButtonNumber.forEach(function (oButtonNumber) {
+
             if (iPulaLinha == 3) {
                 oElementoDivNumber.appendChild(document.createElement('br'));
                 oElementoDivNumber.appendChild(oButtonNumber);
                 iPulaLinha = 1;
+
                 return;
             }
             iPulaLinha = iPulaLinha + 1;
@@ -65,6 +67,7 @@ class Calculadora {
      */
     montaButtonNumberCalc = function () {
         var aRetorno = [];
+
         for (var i = 9; i >= 0; i--) {
             var oElementButton = document.createElement("button");
             var iConteudoButton = document.createTextNode(i);
@@ -94,6 +97,21 @@ class Calculadora {
         var oButtonOperatorSubtracao;
         var oButtonOperatorMultiplicacao;
         var oButtonOperatorDivisao;
+    }
+
+    montaButtonIgual = function() {
+        var oElementButtonIgual = document.createElement("button");
+        oElementButtonIgual.appendChild(document.createTextNode('='));
+
+        return oElementButtonIgual;
+    }
+
+    montaButtonLimpa = function() {
+        var oElementButtonLimpar = document.createElement("button");
+        var a = document.createTextNode("C")
+        oElementButtonLimpar.appendChild(a);
+
+        return oElementButtonLimpar;
     }
 
 }
