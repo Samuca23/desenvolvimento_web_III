@@ -52,11 +52,16 @@ class Calculadora {
     montaInputCalc = function () {
         var oElementInput = document.createElement("input");
         oElementInput.setAttribute("type", "number");
+        oElementInput.setAttribute("class", "input-visor");
 
         /* Estilo do Input */
         oElementInput.style.width = '100%';
 
         return oElementInput;
+    }
+
+    getInputCalc = function() {
+        return document.getElementsByClassName('input-visor');
     }
 
 
@@ -75,7 +80,8 @@ class Calculadora {
             oElementButton.appendChild(iConteudoButton);
             oElementButton.setAttribute('class', 'btn btn-success');
             oElementButton.addEventListener('click', function () {
-                alert('Clicou');
+                var oInputCalc = document.getElementsByClassName('input-visor')[0];
+                oInputCalc.value += this.innerText;
             });
 
             /* Estilo dos botões */
