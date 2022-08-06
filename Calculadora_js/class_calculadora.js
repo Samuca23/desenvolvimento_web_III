@@ -60,7 +60,7 @@ class Calculadora {
         return oElementInput;
     }
 
-    getInputCalc = function() {
+    getInputCalc = function () {
         return document.getElementsByClassName('input-visor');
     }
 
@@ -94,25 +94,33 @@ class Calculadora {
         return aRetorno;
     }
 
-    teste = function () {
-        alert('boa');
+    /**
+     * Monta os operadores passados por parâmetro.
+     * 
+     * @param {Array} aOperador 
+     * @returns Array
+     */
+    montaButtonOperatorCalc = function (aOperador = ['+', '-', 'X', '/']) {
+
+        var aButtonOperator = [];
+        aOperador.forEach(function (oOperador) {
+            var oButtonOperator = document.createElement('button');
+            oButtonOperator.setAttribute('class', 'btn btn-danger');
+            oButtonOperator.appendChild(oOperador);
+            aButtonOperator.push() = oButtonOperator;
+        });
+
+        return aButtonOperator;
     }
 
-    montaButtonOperatorCalc = function () {
-        var oButtonOperatorAdicao;
-        var oButtonOperatorSubtracao;
-        var oButtonOperatorMultiplicacao;
-        var oButtonOperatorDivisao;
-    }
-
-    montaButtonIgual = function() {
+    montaButtonIgual = function () {
         var oElementButtonIgual = document.createElement("button");
         oElementButtonIgual.appendChild(document.createTextNode('='));
 
         return oElementButtonIgual;
     }
 
-    montaButtonLimpa = function() {
+    montaButtonLimpa = function () {
         var oElementButtonLimpar = document.createElement("button");
         var a = document.createTextNode("C")
         oElementButtonLimpar.appendChild(a);
