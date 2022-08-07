@@ -13,7 +13,7 @@ class Calculadora {
 
         var oElementoCalculadora = document.createElement('div');
         oElementoCalculadora.setAttribute('class', 'calculadora');
-        oElementoCalculadora.style.width = '300px';
+        oElementoCalculadora.style.width = '241px';
         oElementoCalculadora.style.height = '200px';
         oElementoCalculadora.style.backgroundColor = 'black';
 
@@ -30,7 +30,7 @@ class Calculadora {
         oElementoCalculadora.appendChild(oElementoDivNumber);
 
         var aButtonNumber = this.montaButtonNumberCalc();
-        aButtonNumber.forEach(function (oButtonNumber) {
+        aButtonNumber.forEach(function(oButtonNumber) {
 
             if (iPulaLinha == 3) {
                 oElementoDivNumber.appendChild(document.createElement('br'));
@@ -42,6 +42,13 @@ class Calculadora {
             iPulaLinha = iPulaLinha + 1;
             oElementoDivNumber.appendChild(oButtonNumber);
         });
+
+        /* Adicionar os botoes de operaçao */
+        var aButtonOperator = this.montaButtonOperatorCalc();
+        aButtonOperator.forEach(function(oButtonOperator) {
+            oElementoDivNumber.appendChild(oButtonOperator);
+        });
+
     }
 
     /**
@@ -51,7 +58,7 @@ class Calculadora {
      */
     montaInputCalc = function () {
         var oElementInput = document.createElement("input");
-        oElementInput.setAttribute("type", "number");
+        oElementInput.setAttribute("type", "text");
         oElementInput.setAttribute("class", "input-visor");
 
         /* Estilo do Input */
@@ -106,8 +113,12 @@ class Calculadora {
         aOperador.forEach(function (oOperador) {
             var oButtonOperator = document.createElement('button');
             oButtonOperator.setAttribute('class', 'btn btn-danger');
-            oButtonOperator.appendChild(oOperador);
-            aButtonOperator.push() = oButtonOperator;
+            oButtonOperator.innerText = oOperador;
+            oButtonOperator.addEventListener('click', function () {
+                var oInputCalc = document.getElementsByClassName('input-visor')[0];
+                oInputCalc.value += this.innerText;
+            });
+            aButtonOperator.push(oButtonOperator);
         });
 
         return aButtonOperator;
