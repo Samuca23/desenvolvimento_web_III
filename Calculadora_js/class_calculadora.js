@@ -14,7 +14,7 @@ class Calculadora {
         var oElementoCalculadora = document.createElement('div');
         oElementoCalculadora.setAttribute('class', 'calculadora');
         oElementoCalculadora.style.width = '241px';
-        oElementoCalculadora.style.height = '200px';
+        oElementoCalculadora.style.height = '240px';
         oElementoCalculadora.style.backgroundColor = 'black';
 
         var oElementoDivInput = document.createElement('div');
@@ -30,7 +30,7 @@ class Calculadora {
         oElementoCalculadora.appendChild(oElementoDivNumber);
 
         var aButtonNumber = this.montaButtonNumberCalc();
-        aButtonNumber.forEach(function(oButtonNumber) {
+        aButtonNumber.forEach(function (oButtonNumber) {
 
             if (iPulaLinha == 3) {
                 oElementoDivNumber.appendChild(document.createElement('br'));
@@ -45,9 +45,12 @@ class Calculadora {
 
         /* Adicionar os botoes de operaçao */
         var aButtonOperator = this.montaButtonOperatorCalc();
-        aButtonOperator.forEach(function(oButtonOperator) {
+        aButtonOperator.forEach(function (oButtonOperator) {
             oElementoDivNumber.appendChild(oButtonOperator);
         });
+
+        oElementoDivNumber.appendChild(this.montaButtonIgual());
+        oElementoDivNumber.appendChild(this.montaButtonLimpa());
 
     }
 
@@ -68,7 +71,7 @@ class Calculadora {
     }
 
     getInputCalc = function () {
-        return document.getElementsByClassName('input-visor');
+        return document.querySelector('.input-visor');
     }
 
 
@@ -87,7 +90,7 @@ class Calculadora {
             oElementButton.appendChild(iConteudoButton);
             oElementButton.setAttribute('class', 'btn btn-success');
             oElementButton.addEventListener('click', function () {
-                var oInputCalc = document.getElementsByClassName('input-visor')[0];
+                var oInputCalc = document.querySelector('.input-visor');
                 oInputCalc.value += this.innerText;
             });
 
@@ -107,17 +110,20 @@ class Calculadora {
      * @param {Array} aOperador 
      * @returns Array
      */
-    montaButtonOperatorCalc = function (aOperador = ['+', '-', 'X', '/']) {
+    montaButtonOperatorCalc = function (aOperador = ['+', '-', '*', '/']) {
 
         var aButtonOperator = [];
+
         aOperador.forEach(function (oOperador) {
             var oButtonOperator = document.createElement('button');
             oButtonOperator.setAttribute('class', 'btn btn-danger');
-            oButtonOperator.innerText = oOperador;
+            oButtonOperator.appendChild(document.createTextNode(oOperador));
+
             oButtonOperator.addEventListener('click', function () {
-                var oInputCalc = document.getElementsByClassName('input-visor')[0];
+                var oInputCalc = document.querySelector('.input-visor');
                 oInputCalc.value += this.innerText;
             });
+
             aButtonOperator.push(oButtonOperator);
         });
 
@@ -127,14 +133,29 @@ class Calculadora {
     montaButtonIgual = function () {
         var oElementButtonIgual = document.createElement("button");
         oElementButtonIgual.appendChild(document.createTextNode('='));
+        oElementButtonIgual.setAttribute('class', 'btn btn-warning');
+
+        oElementButtonIgual.addEventListener('click', function () {
+            var oInputCalc = document.querySelector('.input-visor');
+            var sConta = oInputCalc.value;
+            if (sConta) {
+                var iResultado = eval(sConta);
+                oInputCalc.value = iResultado;
+            }
+
+        });
 
         return oElementButtonIgual;
     }
 
     montaButtonLimpa = function () {
         var oElementButtonLimpar = document.createElement("button");
-        var a = document.createTextNode("C")
-        oElementButtonLimpar.appendChild(a);
+        oElementButtonLimpar.appendChild(document.createTextNode("C"));
+        oElementButtonLimpar.setAttribute('class', 'btn btn-primary');
+        oElementButtonLimpar.addEventListener('click', function () {
+            var oInputCalc = document.querySelector('.input-visor');
+            oInputCalc.value = "";
+        });
 
         return oElementButtonLimpar;
     }
