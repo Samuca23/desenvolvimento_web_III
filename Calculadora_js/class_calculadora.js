@@ -65,7 +65,7 @@ class Calculadora {
      */
     montaDivVisor = function () {
         var oElementoDivInput = document.createElement('div');
-        oElementoDivInput.setAttribute('class', 'visor');
+        oElementoDivInput.setAttribute('class', 'div-visor');
 
         return oElementoDivInput;
     }
@@ -84,30 +84,18 @@ class Calculadora {
     }
 
     /**
-     * Cria o Input que será a Tela da Calculadora.
+     * Cria o Visor da Calculadora.
      * 
      * @returns Element HTML
      */
     montaVisorCalc = function () {
-        var oElementInput = document.createElement("input");
-        oElementInput.setAttribute("type", "text");
-        oElementInput.setAttribute("class", "input-visor");
+        var oElementVisor = document.createElement("div");
+        oElementVisor.setAttribute("class", "visor");
 
-        /* Estilo do Input */
-        oElementInput.style.width = '100%';
+       this.styleVisor(oElementVisor);
 
-        return oElementInput;
+        return oElementVisor;
     }
-
-    /**
-     * Retorna o Visor.
-     * 
-     * @returns Element HTML
-     */
-    getInputCalc = function () {
-        return document.querySelector('.input-visor');
-    }
-
 
     /**
      * Cria os botões numéricos.
@@ -125,8 +113,8 @@ class Calculadora {
             oElementButton.setAttribute('class', 'btn btn-success');
 
             oElementButton.addEventListener('click', function () {
-                var oInputCalc = document.querySelector('.input-visor');
-                oInputCalc.value += this.innerText;
+                var oVisorCalc = document.getElementsByClassName('visor')[0];
+                oVisorCalc.innerText += this.innerText;
             });
 
             this.stylePadraoButtonNumber(oElementButton);
@@ -155,9 +143,9 @@ class Calculadora {
             oButtonOperator.appendChild(document.createTextNode(oOperador));
 
             oButtonOperator.addEventListener('click', function () {
-                var oInputCalc = document.querySelector('.input-visor');
-                if (oInputCalc.value) {
-                    oInputCalc.value += this.innerText;
+                var oVisorCalc = document.getElementsByClassName('visor')[0];
+                if (oVisorCalc.innerText) {
+                    oVisorCalc.innerText += this.innerText;
                 }
             });
             aButtonOperator.push(oButtonOperator);
@@ -177,14 +165,14 @@ class Calculadora {
         oElementButtonIgual.setAttribute('class', 'btn btn-warning');
 
         oElementButtonIgual.addEventListener('click', function () {
-            var oInputCalc = document.querySelector('.input-visor');
-            var sConta = oInputCalc.value;
+            var oVisorCalc = document.getElementsByClassName('visor')[0];
+            var sConta = oVisorCalc.innerText;
 
             if (sConta) {
                 try {
                     var iResultado = eval(sConta);
                     if (iResultado) {
-                        oInputCalc.value = iResultado;
+                        oVisorCalc.innerText = iResultado;
                     }
                 }
                 catch (e) {
@@ -210,8 +198,8 @@ class Calculadora {
         oElementButtonLimpar.setAttribute('class', 'btn btn-primary');
 
         oElementButtonLimpar.addEventListener('click', function () {
-            var oInputCalc = document.querySelector('.input-visor');
-            oInputCalc.value = "";
+            var oVisorCalc = document.getElementsByClassName('visor')[0];
+            oVisorCalc.innerText = "";
         });
 
         this.styleButtonIgualAndLimpar(oElementButtonLimpar);
@@ -226,8 +214,17 @@ class Calculadora {
      */
     styleCalculadora = function (oCalc) {
         oCalc.style.width = '241px';
-        oCalc.style.height = '241px';
+        oCalc.style.height = '261px';
         oCalc.style.backgroundColor = 'black';
+        oCalc.style.borderRadius = '5px';
+    }
+
+    styleVisor = function (oVisor) {
+        oVisor.style.width = '100%';
+        oVisor.style.height = '50px';
+        oVisor.style.backgroundColor = 'white';
+        oVisor.style.border = '1px solid black';
+        oVisor.style.fontSize = '30px';
     }
 
     /**
