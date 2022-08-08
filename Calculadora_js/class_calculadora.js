@@ -11,13 +11,13 @@ class Calculadora {
         var iPulaLinha = 0;
         var oElementContainer = document.getElementsByClassName('container');
         var oElementoCalculadora = this.montaDivCalculadora();
-        var oElementoDivInput = this.montaDivVisor();
+        var oElementoDivVisor = this.montaDivVisor();
         var oElementoDivNumber = this.montaDivNumber();
 
         /* Adiciona os Elementos para a Tela */
         oElementContainer[0].appendChild(oElementoCalculadora);
-        oElementoCalculadora.appendChild(oElementoDivInput);
-        oElementoDivInput.appendChild(this.montaVisorCalc());
+        oElementoCalculadora.appendChild(oElementoDivVisor);
+        oElementoDivVisor.appendChild(this.montaVisorCalc());
         oElementoCalculadora.appendChild(oElementoDivNumber);
 
         /* Adicionando os botões para a Tela */
