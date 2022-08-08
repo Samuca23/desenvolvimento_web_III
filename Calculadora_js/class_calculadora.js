@@ -123,11 +123,12 @@ class Calculadora {
 
             oElementButton.appendChild(iConteudoButton);
             oElementButton.setAttribute('class', 'btn btn-success');
+            
             oElementButton.addEventListener('click', function () {
                 var oInputCalc = document.querySelector('.input-visor');
                 oInputCalc.value += this.innerText;
             });
-            /* Estilo dos botões */
+
             this.stylePadraoButtonNumber(oElementButton);
             aRetorno.push(oElementButton);
         }
@@ -184,6 +185,8 @@ class Calculadora {
 
         });
 
+        this.styleButtonIgualAndLimpar(oElementButtonIgual);
+
         return oElementButtonIgual;
     }
 
@@ -201,6 +204,8 @@ class Calculadora {
             var oInputCalc = document.querySelector('.input-visor');
             oInputCalc.value = "";
         });
+
+        this.styleButtonIgualAndLimpar(oElementButtonLimpar);
 
         return oElementButtonLimpar;
     }
@@ -225,6 +230,12 @@ class Calculadora {
         oButton.style.width = '75px';
         oButton.style.margin = '1px';
     }
+
+    styleButtonIgualAndLimpar = function (oButton) {
+        oButton.style.width = '113px';
+        oButton.style.margin = '1px';
+    }
+
 }
 
 let calculadora = new Calculadora();
