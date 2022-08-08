@@ -41,8 +41,8 @@ class Calculadora {
             oElementoDivNumber.appendChild(oButtonOperator);
         });
 
-        oElementoDivNumber.appendChild(this.montaButtonIgual());
         oElementoDivNumber.appendChild(this.montaButtonLimpa());
+        oElementoDivNumber.appendChild(this.montaButtonIgual());
     }
 
     /**
@@ -130,7 +130,7 @@ class Calculadora {
      * @param {Array} aOperador 
      * @returns Array
      */
-    montaButtonOperatorCalc = function (aOperador = ['+', '-', '*', '/']) {
+    montaButtonOperatorCalc = function (aOperador = ['+', '-', '*', '/', '.']) {
 
         var aButtonOperator = [];
 
@@ -182,7 +182,7 @@ class Calculadora {
 
         });
 
-        this.styleButtonIgualAndLimpar(oElementButtonIgual);
+        this.styleButtonIgual(oElementButtonIgual);
 
         return oElementButtonIgual;
     }
@@ -202,7 +202,7 @@ class Calculadora {
             oVisorCalc.innerText = "";
         });
 
-        this.styleButtonIgualAndLimpar(oElementButtonLimpar);
+        this.styleButtonLimpar(oElementButtonLimpar);
 
         return oElementButtonLimpar;
     }
@@ -237,8 +237,13 @@ class Calculadora {
         oButton.style.margin = '1px';
     }
 
-    styleButtonIgualAndLimpar = function (oButton) {
-        oButton.style.width = '113px';
+    styleButtonIgual = function (oButton) {
+        oButton.style.width = '117px';
+        oButton.style.margin = '1px';
+    }
+    
+    styleButtonLimpar = function (oButton) {
+        oButton.style.width = '70px';
         oButton.style.margin = '1px';
     }
 
