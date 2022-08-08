@@ -123,7 +123,7 @@ class Calculadora {
 
             oElementButton.appendChild(iConteudoButton);
             oElementButton.setAttribute('class', 'btn btn-success');
-            
+
             oElementButton.addEventListener('click', function () {
                 var oInputCalc = document.querySelector('.input-visor');
                 oInputCalc.value += this.innerText;
@@ -156,7 +156,9 @@ class Calculadora {
 
             oButtonOperator.addEventListener('click', function () {
                 var oInputCalc = document.querySelector('.input-visor');
-                oInputCalc.value += this.innerText;
+                if (oInputCalc.value) {
+                    oInputCalc.value += this.innerText;
+                }
             });
             aButtonOperator.push(oButtonOperator);
         });
@@ -179,8 +181,15 @@ class Calculadora {
             var sConta = oInputCalc.value;
 
             if (sConta) {
-                var iResultado = eval(sConta);
-                oInputCalc.value = iResultado;
+                try {
+                    var iResultado = eval(sConta);
+                    if (iResultado) {
+                        oInputCalc.value = iResultado;
+                    }
+                }
+                catch (e) {
+                    alert('Passe uma expressão válida!');
+                }
             }
 
         });
