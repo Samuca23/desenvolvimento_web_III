@@ -19,3 +19,6 @@ let convertUfcToGmt3 = (sDate = false) => {
         return newDate.toLocaleString();
     }
 }
+
+console.log(convertGm3ToUfc(new Date()));
+console.log(convertUfcToGmt3(new Date().toISOString()));
