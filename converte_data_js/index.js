@@ -4,21 +4,26 @@
  * @param {Date} oDate 
  * @returns 
  */
-let convertGm3ToUfc = (oDate = false) => {
+let convertUfcToGmt3 = (oDate = false) => {
     if (oDate) {
-        var newDate = oDate.toISOString();
-
-        return newDate;
-    }
-}
-
-let convertUfcToGmt3 = (sDate = false) => {
-    if(sDate) {
-        var newDate = new Date(Date.parse(sDate));
+        var newDate = new Date(oDate);
 
         return newDate.toLocaleString();
     }
 }
 
-console.log(convertGm3ToUfc(new Date()));
+let convertGm3ToUfc = (sDate = false) => {
+    if (sDate) {
+        [Data, Hora] = sDate.split(' ');
+        Data = Data.split('/').reverse().join();
+
+        Data = Data + ' ' + Hora;
+
+        var newDate = new Date(Data);
+
+        return newDate.toISOString();
+    }
+}
+
+console.log(convertGm3ToUfc('19/09/2022 16:55:00'));
 console.log(convertUfcToGmt3(new Date().toISOString()));
