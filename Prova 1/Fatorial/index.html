@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatorial</title>
+</head>
+<body>
+    <input type="number" id="numero-fatorial" placeholder="Número para o Fatorial">
+    <input type="button" id="button" onclick="calculaFatorial()" value="CALCULAR">
+    <div id="resultado"></div>
+    <script>
+        let calculaFatorial = () => {
+            let iValorFatorial = document.getElementById('numero-fatorial').value;
+            let iValor = false
+            for(let i = parseInt(iValorFatorial) - 1; i != 0; i --) {
+                if (!iValor) {
+                     iValor = parseInt(iValorFatorial) * i;
+                } else {
+                    iValor = iValor * i;
+                }
+            }
+            let divResultado = document.getElementById('resultado');
+            divResultado.innerText = iValor;
+        }
+    </script>
+</body>
+</html>
