@@ -16,15 +16,23 @@ class NegociacaoConttroller {
     }
 
     adiciona(event) {
-        event.preventDefault();
-
-        this._negociacoes.adiciona(this._criaNegociacao());
-        this._mensagem.texto = 'Negociação adicionada com Sucesso!';
-        this._limparFormulario();
+        try {
+            event.preventDefault();
+            this._negociacoes.adiciona(this._criaNegociacao());
+            this._mensagem.texto = 'Negociação adicionada com Sucesso!';
+            this._limparFormulario();
+        } catch (err) {
+            console.log(err);
+            if (err instanceof DataInvalidaExcpetion) {
+                this._mensagem.texto = err.message;
+            } else {
+                this._mensagem.texto = 'Erro inesperado';
+            }
+        }
     }
 
     _limparFormulario() {
-        this._inputData.value = '2022-01-03';
+        this._inputData.value = '01/01/2022';
         this._inputQuantidade.value = 1;
         this._inputValor.value = 2.0
         this._inputData.focus();
