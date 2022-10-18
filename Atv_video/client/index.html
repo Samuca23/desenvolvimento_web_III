@@ -49,49 +49,11 @@
     <script src="app/ui/views/negociacoesView.js"></script>
     <script src="app/ui/models/mensagem.js"></script>
     <script src="app/ui/views/mensagemView.js"></script>
+    <script src="app/util/ProxyFactory.js"></script>
     <script src="app/app.js"></script>
 
     <script>
-        // const negociacao = new Proxy(new Negociacao(new Date(), 2, 100), {
-        //     get(target, prop, receiver) {
-        //         console.log(`a propriedade "${prop}" caiu na armadilha`);
-        //         return target[prop];
-        //     },
-            
-        //     set(target, prop, value, receiver) {
-        //         console.log(`${prop} guarda ${target[prop]}, recebera ${value}`)
-        //         return Reflect.set(target, prop, value);
-        //     }
-        // });
-
-        // console.log(negociacao.quantidade);
-        // console.log(negociacao.valor);
-        // negociacao._quantidade = 10;
-        // negociacao._valor = 200;
-
-        // const negociacoes = new Proxy(new Negociacoes(), {
-        //     get(target, prop, receiver) {
-        //         if (typeof(target[prop]) == typeof(Function) && ['adiciona', 'esvazia'].includes(prop)) {
-        //             return function() {
-        //                 console.log(`${prop} disparou a armadilha`);
-        //                 target[prop].apply(target, arguments);
-        //             }
-
-        //         } else {
-        //             return target[prop];
-        //         }
-        //     },
-        //     set(target, prop, value, receiver) {
-        //         console.log(`${prop} guarda ${target[prop]}, receberá ${value}`);
-        //     }
-        // });
-        // negociacoes.adiciona(new Negociacao(new Date(), 1, 200));
-
-        // function exibeNomeCompleto() {
-        //     console.log(`Nome completo: ${arguments[0]} ${arguments[1]}`);
-        // }
-        // exibeNomeCompleto();
-
+      
     </script>
 </body>
 
