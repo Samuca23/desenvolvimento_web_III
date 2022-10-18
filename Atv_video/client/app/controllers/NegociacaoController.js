@@ -9,6 +9,8 @@ class NegociacaoConttroller {
 
         this._negociacoes = new Bind(new Negociacoes(), new NegociacoesView('#negociacoes'), 'adiciona', 'esvazia');
 
+        this._service = new NegociacaoService();
+
         this._negociacoesView = new NegociacoesView('#negociacoes');
         this._negociacoesView.update(this._negociacoes);
 
@@ -48,6 +50,18 @@ class NegociacaoConttroller {
     apaga() {
         this._negociacoes.esvazia();
         this._mensagem.texto = 'Negociações apagadas com sucesso';
+    }
+
+    importaNegociacoes() {
+       this._service.obterNegociacoesSemana((err, negociacoes) => {
+        if (err) {
+            this._mensagem.texto = "Não foi possivel obter as negociações da semana";
+        }
+
+        negociacoes.forEach(negociacoes => this._negociacoes.adiciona(negociacoes));
+
+        this._mensagem.texto = 'Negociações importadas com Sucesso!';
+       });
     }
 
 }
